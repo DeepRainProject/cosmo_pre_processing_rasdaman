@@ -1,0 +1,1 @@
+This directory contains the documentation of the different scripts that needs to be used to import the DWD data to rasdaman.

@@ -1,0 +1,91 @@
+{
+  "config": {
+    "service_url": "http://localhost:8080/rasdaman/ows",
+    "automated": true,
+    "mock": false,
+    "track_files": false,
+    "blocking": false,
+    "subset_correction": false,
+    "insitu": true
+  },
+  "input": {
+    "coverage_id": "COSMO_DE_EPS_temperature_remapped_test_v2",
+    "paths": [ "FILE_PATH"  ]
+  },
+  "recipe": {
+    "name": "general_coverage",
+    "options": {
+      "coverage": {
+        "crs": "OGC/0/AnsiDate@OGC/0/Index1D?axis-label=\"ensemble\"@OGC/0/Index1D?axis-label=\"forecast_hour\"@OGC/0/Index1D?axis-label=\"pressure_level\"@EPSG/0/4326",
+        "metadata": {
+          "type": "json",
+          "global": {
+            "title": "COSMO_EPS_Data",
+            "originator": "Deutscher Wetterdienst - Zentrale, Frankfurter Straße 135, 63067 Offenbach/Main",
+            "provider": "Juelich Supercomputing Centre, Forschungszentrum Juelich, 52425 Juelich",
+            "description": "Temperature from the COSMO Ensemble Prediction System (COSMO-EPS) of the Deutscher Wetterdienst. The data have been interpolated from the rotated model grid (North pole at 40N, 170W) to regular latitude, longitude coordinates.",
+            "acknowledgement": "If you make use of these data we ask to acknowledge the data provision as follows: COSMO-EPS data was produced by the Deutscher Wetterdienst and provided by Forschungszentrum Juelich via the rasdaman EarthServer federation in the context of the DeepRain project funded by the German ministry of education and research (grant no 01 IS18047A).",
+            "CDI": "${netcdf:metadata:CDI}",
+            "NCO": "${netcdf:metadata:NCO}",
+            "CDO": "${netcdf:metadata:CDO}"
+          }
+        },
+        "slicer": {
+          "type": "netcdf",
+          "pixelIsPoint": "true",
+          "bands": [
+            {
+              "name": "temperature",
+              "identifier": "t"
+            }
+          ],
+          "axes": {
+            "ansi": {
+              "min": "datetime(regex_extract('${file:name}', '.*?(\\d+)\\.m\\d+.nc', 1), 'YYYYMMDDHH')",
+              "gridOrder": 0,
+              "type": "ansidate",
+              "irregular": true,
+              "resolution": "1",
+              "dataBound": false
+            },
+            "ensemble": {
+              "min": "int(regex_extract('${file:name}', '(.*).m(.*).nc', 2))",
+              "gridOrder": 1,
+              "irregular": true,
+              "dataBound": false
+            },
+            "forecast_hour": {
+              "min": "${netcdf:variable:time:min}",
+              "max": "${netcdf:variable:time:max}",
+              "directPositions": "${netcdf:variable:time}",
+              "irregular": true,
+              "resolution": "1",
+              "gridOrder": 2
+            },
+            "pressure_level": {
+              "min": "${netcdf:variable:plev:min}",
+              "max": "${netcdf:variable:plev:max}",
+              "irregular": true,
+              "directPositions": "${netcdf:variable:plev}",
+              "resolution": "1",
+              "gridOrder": 3
+            },
+            "Lat": {
+              "min": "${netcdf:variable:lat:min}",
+              "max": "${netcdf:variable:lat:max}",
+              "gridOrder": 4,
+              "resolution": "-((${netcdf:variable:lat:max} - ${netcdf:variable:lat:min}) / (${netcdf:dimension:lat} - 1.0))"
+            },
+            "Long": {
+              "min": "${netcdf:variable:lon:min}",
+              "max": "${netcdf:variable:lon:max}",
+              "gridOrder": 5,
+              "resolution": "((${netcdf:variable:lon:max} - ${netcdf:variable:lon:min}) / (${netcdf:dimension:lon} - 1.0))"
+            }
+          }
+        }
+      },
+      "tiling": "aligned [0:0,0:0,0:0,0:5,0:450,0:379] TILE SIZE 4113120"
+    }
+  }
+}
