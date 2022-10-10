@@ -23,9 +23,6 @@ GCC/10.3.0
 ParaStationMPI/5.4.10-1
 CDO/2.0.0rc3
 netCDF/4.7.4
-SciPy-Stack/2021-Python-3.8.5
-mpi4py/3.0.3-Python-3.8.5
-netcdf4-python/1.5.4-Python-3.8.5
 NCO/4.9.5
 ```
 Python packages that are used is mentioned in ```requirments.txt```. 
