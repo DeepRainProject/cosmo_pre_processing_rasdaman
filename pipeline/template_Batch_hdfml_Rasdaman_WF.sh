@@ -12,7 +12,7 @@
 #SBATCH --partition=batch
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=xxxx@fz-juelich.de
-##jutil env activate -p cdeepacf
+##jutil env activate -p XXX
 
 
 module --force purge
