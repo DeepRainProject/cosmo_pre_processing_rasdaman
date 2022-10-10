@@ -1,5 +1,5 @@
 #!/bin/bash -x
-#SBATCH --account=deepacf
+#SBATCH --account=XXX
 #SBATCH --nodes=2
 #SBATCH --ntasks=48
 ##SBATCH --ntasks-per-node=1
@@ -11,7 +11,7 @@
 #SBATCH --time=10:00:00
 #SBATCH --partition=batch
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=a.mozaffari@fz-juelich.de
+#SBATCH --mail-user=xxxx@fz-juelich.de
 ##jutil env activate -p cdeepacf
 
 
