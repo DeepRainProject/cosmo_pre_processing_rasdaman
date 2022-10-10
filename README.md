@@ -1,33 +1,6 @@
-This project includes three different Cubes. This means we have running 3 different VMs, that have all rasdaman installed.
+# COSMO - EPS data pre-processing for Rasdaman data cube 
 
-This is the **master branch**. The only Code that will be pushed into this branch is from the develop branch. This is the branch containing a release. No new branch will be created out of this. Use the develop branch instead.
+This is the **master branch**. It is used to publish the final code that is used to pre-process[COSMO-EPS](https://www.dwd.de/EN/research/weatherforecasting/num_modelling/04_ensemble_methods/ensemble_prediction/ensemble_prediction_en.html;jsessionid=57F90E1D36C2FBC70EE508C1A1344A42.live31081?nn=484822#COSMO-D2-EPS) data that is produced by Deutscher Wetterdienst (German Meteorological Service.
+The original data is avilable upon request via Jülich Super Computing centre [MeteoCloud](https://datapub.fz-juelich.de/slcs/meteocloud/index.html). 
 
-The actual documentation can be found in the documentation folder. The scripts for the MeteoCube and GeoCube are stored in /scripts/ and for EnterpriseCube in /pipeline/.
-
-**Here is a short overview over the Cubes:**
-
-| Enterprise Cube | 
-| --------------- | 
-| 134.94.199.213  |
-| `http://zam10213.zam.kfa-juelich.de:7020/rasdaman/ows`  |
-| Accessible from "Forschungszentrum Jülich" and "Jacobs University Bremen" |
-| It will replace the MeteoCube and will store the data provided by DWD |
-
-
-| GeoCube |
-| ------- |
-| zam10182 (134.94.199.182) |
-| `http://zam10182.zam.kfa-juelich.de:7020/rasdaman/ows` |
-| Accessible from "Forschungszentrum Jülich" and "Jacobs University Bremen" |
-| this will store the data mentioned here: https://gitlab.version.fz-juelich.de/toar/toar-location-services/-/wikis/Rasdaman-Data |
-
-
-| MeteoCube |
-| --------- |
-| zam10129 (134.94.199.129) |
-| `http://zam10129.zam.kfa-juelich.de:7020/rasdaman/ows` |
-| Accessible from "Forschungszentrum Jülich" and "Jacobs University Bremen" |
-| will be replaced by the EnterpriseCube |
-
-
-
+The resulted data is avilable on Jülich node of [Federated earth server](http://zam10213.zam.kfa-juelich.de:7020/rasdaman/ows)
